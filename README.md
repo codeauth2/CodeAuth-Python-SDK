@@ -22,8 +22,7 @@ CodeAuth.Initialize("<your project API endpoint>", "<your project ID>")
 Begins the sign in or register flow by sending the user a one time code via email.
 ```javascript
 result = CodeAuth.SignInEmail("<user email>")
-match result.error
-{
+match result.error:
 	case "bad_json": print("bad_json")
 	case "project_not_found": print("project_not_found")
 	case "bad_ip_address": print("bad_ip_address")
@@ -34,15 +33,13 @@ match result.error
 	case "email_provider_error": print("email_provider_error")
 	case "internal_error": print("internal_error")
 	case "connection_error": print("connection_error") #sdk failed to connect to api server
-}
 ```
 
 ### Signin / Email Verify
 Checks if the one time code matches in order to create a session token.
 ```python
 result = CodeAuth.SignInEmailVerify("<user email>", "<one time code>")
-match result.error
-{
+match result.error:
 	case "bad_json": print("bad_json")
 	case "project_not_found": print("project_not_found")
 	case "bad_ip_address": print("bad_ip_address")
@@ -51,7 +48,6 @@ match result.error
 	case "bad_code": print("bad_code")
 	case "internal_error": print("internal_error")
 	case "connection_error": print("connection_error") #sdk failed to connect to api server
-}
 print(result.session_token)
 print(result.email)
 print(result.expiration)
@@ -62,8 +58,7 @@ print(result.refresh_left)
 Begins the sign in or register flow by allowing users to sign in through a social OAuth2 link.
 ```python
 result = CodeAuth.SignInSocial("<social_type>")
-match result.error
-{
+match result.error:
 	case "bad_json": print("bad_json")
 	case "project_not_found": print("project_not_found")
 	case "bad_ip_address": print("bad_ip_address")
@@ -71,7 +66,6 @@ match result.error
 	case "bad_social_type": print("bad_social_type")
 	case "internal_error": print("internal_error")
 	case "connection_error": print("connection_error") #sdk failed to connect to api server
-}
 print(result.signin_url)
 ```
 
@@ -79,8 +73,7 @@ print(result.signin_url)
 This is the next step after the user signs in with their social account. This request checks the authorization code given by the social media company in order to create a session token.
 ```python
 result = CodeAuth.SignInSocialVerify("<social type>", "<authorization code>")
-match result.error
-{
+match result.error:
 	case "bad_json": print("bad_json")
 	case "project_not_found": print("project_not_found")
 	case "bad_ip_address": print("bad_ip_address")
@@ -89,7 +82,6 @@ match result.error
 	case "bad_authorization_code": print("bad_authorization_code")
 	case "internal_error": print("internal_error")
 	case "connection_error": print("connection_error") #sdk failed to connect to api server
-}
 print(result.session_token)
 print(result.email)
 print(result.expiration)
@@ -100,8 +92,7 @@ print(result.refresh_left)
 Gets the information associated with a session token.
 ```python
 result = CodeAuth.SessionInfo("<session_token>")
-match result.error
-{
+match result.error:
 	case "bad_json": print("bad_json")
 	case "project_not_found": print("project_not_found")
 	case "bad_ip_address": print("bad_ip_address")
@@ -109,7 +100,6 @@ match result.error
 	case "bad_session_token": print("bad_session_token")
 	case "internal_error": print("internal_error")
 	case "connection_error": print("connection_error") #sdk failed to connect to api server
-}
 print(result.email)
 print(result.expiration)
 print(result.refresh_left)
@@ -119,8 +109,7 @@ print(result.refresh_left)
 Create a new session token using existing session token.
 ```python
 result = CodeAuth.SessionRefresh("<session_token>")
-match result.error
-{
+match result.error:
 	case "bad_json": print("bad_json")
 	case "project_not_found": print("project_not_found")
 	case "bad_ip_address": print("bad_ip_address")
@@ -129,7 +118,6 @@ match result.error
 	case "out_of_refresh": print("out_of_refresh")
 	case "internal_error": print("internal_error")
 	case "connection_error": print("connection_error") #sdk failed to connect to api server
-}
 print(result.session_token)
 print(result.email)
 print(result.expiration)
@@ -139,9 +127,8 @@ print(result.refresh_left)
 ### Session / Invalidate
 Invalidate a session token. By doing so, the session token can no longer be used for any api call.
 ```javascript
-var result = CodeAuth.SessionInvalidate("<session_token>", "<invalidate_type>")
-match result.error
-{
+result = CodeAuth.SessionInvalidate("<session_token>", "<invalidate_type>")
+match result.error:
 	case "bad_json": print("bad_json")
 	case "project_not_found": print("project_not_found")
 	case "bad_ip_address": print("bad_ip_address")
@@ -150,6 +137,5 @@ match result.error
 	case "bad_invalidate_type": print("bad_invalidate_type")
 	case "internal_error": print("internal_error")
 	case "connection_error": print("connection_error") #sdk failed to connect to api server 
-}
 ```
 
