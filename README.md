@@ -20,7 +20,7 @@ CodeAuth.Initialize("<your project API endpoint>", "<your project ID>")
 
 ### Signin / Email
 Begins the sign in or register flow by sending the user a one time code via email.
-```javascript
+```python
 result = CodeAuth.SignInEmail("<user email>")
 match result.error:
 	case "bad_json": print("bad_json")
@@ -126,7 +126,7 @@ print(result.refresh_left)
 
 ### Session / Invalidate
 Invalidate a session token. By doing so, the session token can no longer be used for any api call.
-```javascript
+```python
 result = CodeAuth.SessionInvalidate("<session_token>", "<invalidate_type>")
 match result.error:
 	case "bad_json": print("bad_json")
