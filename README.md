@@ -72,14 +72,14 @@ print(result.signin_url)
 ### Signin / Social Verify
 This is the next step after the user signs in with their social account. This request checks the authorization code given by the social media company in order to create a session token.
 ```python
-result = CodeAuth.SignInSocialVerify("<social type>", "<authorization code>")
+result = CodeAuth.SignInSocialVerify("<social type>", "<code>")
 match result.error:
 	case "bad_json": print("bad_json")
 	case "project_not_found": print("project_not_found")
 	case "bad_ip_address": print("bad_ip_address")
 	case "rate_limit_reached": print("rate_limit_reached")
 	case "bad_social_type": print("bad_social_type")
-	case "bad_authorization_code": print("bad_authorization_code")
+	case "bad_code": print("bad_code")
 	case "internal_error": print("internal_error")
 	case "connection_error": print("connection_error") #sdk failed to connect to api server
 print(result.session_token)
