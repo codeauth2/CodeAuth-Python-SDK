@@ -161,12 +161,12 @@ class CodeAuth:
         )
 
     @staticmethod
-    def SignInSocialVerify(social_type, authorization_code):
+    def SignInSocialVerify(social_type, code):
         """
         Checks the authorization code given by the social media company in order to create a session token.
 
         :param social_type: The type of social OAuth2 url you are trying to verify. Possible social types: "google", "microsoft", "apple"
-        :param authorization_code: The authorization code given by the social. Check the docs for more info.
+        :param code: The authorization code given by the social. Check the docs for more info.
         :return: { session_token, email, expiration, refresh_left }
         """
         CodeAuth._EnsureInitialized()
@@ -177,7 +177,7 @@ class CodeAuth:
             {
                 "project_id": CodeAuth._ProjectID,
                 "social_type": social_type,
-                "authorization_code": authorization_code
+                "code": code
             }
         )
 
